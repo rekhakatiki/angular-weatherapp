@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiServiceService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getCurrentLocation();
@@ -35,12 +35,16 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getCurrentLocation() {
+  /**
+   * Get the current location weather data using navigator.geolcation method
+   * @return void
+   */
+  getCurrentLocation():void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
           this.locationAccess = true;
-          this.apiService.get({lat: position.coords.latitude, lon:position.coords.longitude, units: 'imperial' }).pipe(
+          this.apiService.get({ lat: position.coords.latitude, lon: position.coords.longitude, units: 'imperial' }).pipe(
             catchError((error) => {
               if (error.error instanceof ErrorEvent) {
                 this.errorMsg = `Error: ${error.error.message}`;
@@ -50,9 +54,9 @@ export class AppComponent implements OnInit {
               return throwError(() => error);
             })
           )
-          .subscribe((data: any) => {
-            this.currentLocationWeatherdata = data;
-          });
+            .subscribe((data: any) => {
+              this.currentLocationWeatherdata = data;
+            });
         }
       );
     } else {
@@ -60,7 +64,12 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onSubmit(form: FormGroup) {
+  /**
+   * Form Submit to get the weather data based on search location
+   * @param form FormGroup
+   * @return void
+   */
+  onSubmit(form: FormGroup): void {
     this.weatherdata = null;
     this.submitted = true;
     this.errorMsg = '';
@@ -85,7 +94,13 @@ export class AppComponent implements OnInit {
     }
   }
 
-  setParamsBasedOnLocationValue(location: string) {
+  /**
+   * Set the query params object based on location string
+   * Ex: city, zipcode, lat&long
+   * @param location 
+   * @returns params any
+   */
+  setParamsBasedOnLocationValue(location: string): any {
     const params: any = {
       units: 'imperial'
     };
