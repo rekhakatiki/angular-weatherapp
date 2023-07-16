@@ -52,16 +52,18 @@
       <div>
         <h3>Current Location Weather Data</h3>
         <p><strong>Location:</strong> {{currentLocationWeatherdata?.name}}</p>
-        <p><strong>Temprature: </strong> {{currentLocationWeatherdata?.main?.temp}} F</p>
+        <p><strong>Temprature: </strong> {{currentLocationWeatherdata?.main?.temp}}&deg; F</p>
         <p><strong>Description: </strong> {{currentLocationWeatherdata?.weather[0]?.description}}</p>
+        <p><strong>Wind: </strong> {{currentLocationWeatherdata?.wind?.speed}}</p>
       </div>
     </ng-container>
     <ng-container *ngIf="weatherdata">
       <div>
         <h3>Search Location Weather Data</h3>
         <p><strong>Location:</strong> {{weatherdata?.name}}</p>
-        <p><strong>Temprature: </strong> {{weatherdata?.main?.temp}} F</p>
+        <p><strong>Temprature: </strong> {{weatherdata?.main?.temp}}&deg; F</p>
         <p><strong>Description: </strong> {{weatherdata?.weather[0]?.description}}</p>
+        <p><strong>Wind: </strong> {{weatherdata?.wind?.speed}}miles/hr</p>
       </div>
     </ng-container>
   </div>

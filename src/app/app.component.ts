@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
           this.locationAccess = true;
-          this.apiService.get({ lat: position.coords.latitude, lon: position.coords.longitude, units: 'imperial' }).pipe(
+          this.apiService.get({ lat: position.coords.latitude, lon: position.coords.longitude, units: 'imperial'}).pipe(
             catchError((error) => {
               if (error.error instanceof ErrorEvent) {
                 this.errorMsg = `Error: ${error.error.message}`;
@@ -118,6 +118,7 @@ export class AppComponent implements OnInit {
     } else {
       params.q = location;
     }
+    
     return params;
   }
 
