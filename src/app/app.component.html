@@ -54,7 +54,7 @@
         <p><strong>Location:</strong> {{currentLocationWeatherdata?.name}}</p>
         <p><strong>Temprature: </strong> {{currentLocationWeatherdata?.main?.temp}}&deg; F</p>
         <p><strong>Description: </strong> {{currentLocationWeatherdata?.weather[0]?.description}}</p>
-        <p><strong>Wind: </strong> {{currentLocationWeatherdata?.wind?.speed}}</p>
+        <p><strong>Wind: </strong> {{currentLocationWeatherdata?.wind?.speed}}miles/hr</p>
       </div>
     </ng-container>
     <ng-container *ngIf="weatherdata">
